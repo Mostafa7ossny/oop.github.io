@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>المرجع الشامل والنهائي في C++ و OOP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Fira+Code:wght@400;700&display=swap');
+
+        :root {
+            --primary: #0d47a1;     /* أزرق غامق */
+            --accent: #d32f2f;      /* أحمر للامتحانات */
+            --code-bg: #1e1e1e;     /* خلفية الكود */
+            --light-bg: #f5f5f5;
+            --note-bg: #e3f2fd;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: white;
+            color: #212121;
+            line-height: 1.7;
+        }
+
+        /* تنسيقات الطباعة */
+        @media print {
+            .page-break { page-break-after: always; }
+            body { padding: 0; }
+            .no-print { display: none; }
+        }
+
+        /* الغلاف */
+        .cover {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 8px double var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .cover h1 { font-size: 3.5rem; margin: 0; color: var(--primary); }
+        .cover h2 { font-size: 2rem; color: #555; }
+        .cover p { font-size: 1.2rem; margin-top: 20px; font-weight: bold; }
+
+        /* العناوين */
+        h2 {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            color: #c62828; /* أحمر فرعي */
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        /* النصوص والقوائم */
+        p, li { font-size: 1.1rem; }
+        ul { margin-right: 20px; }
+
+        /* الأكواد */
+        pre {
+            background: var(--code-bg);
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            border: 1px solid #ccc;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.95rem;
+        }
+
+        /* Syntax Highlighting */
+        .kw { color: #569cd6; font-weight: bold; }   /* Keywords like int, class */
+        .str { color: #ce9178; }                     /* Strings */
+        .num { color: #b5cea8; }                     /* Numbers */
+        .func { color: #dcdcaa; }                    /* Functions */
+        .com { color: #6a9955; font-style: italic; } /* Comments */
+        .type { color: #4ec9b0; }                    /* Types */
+
+        /* المربعات المميزة */
+        .exam-box {
+            background: #ffebee;
+            border-right: 6px solid var(--accent);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .exam-title {
+            color: var(--accent);
+            font-weight: 900;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-box {
+            background: var(--note-bg);
+            border-right: 6px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+        th { background: #eee; }
+
+    </style>
+</head>
+<body>
+
+    <div class="cover">
+        <h1>C++ & OOP</h1>
+        <h2>المرجع الشامل</h2>
+        <p>شرح تفصيلي - أسئلة الامتحانات - تريكات الكود</p>
+        <p style="margin-top: 50px;">إصدار كامل وشامل</p>
+        <p style="margin-top: 50px;">اعداد / Mostafa Hosny</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الأول: أساسيات C++ (Core Concepts)</h2>
+
+    <h3>1. هيكل البرنامج (Program Structure)</h3>
+    <p>كل برنامج C++ يبدأ من دالة <code>main</code>. الكود يقرأ من أعلى لأسفل.</p>
+    <pre><code><span class="kw">#include</span> &lt;iostream&gt; <span class="com">// استدعاء مكتبة الإدخال والإخراج</span>
+<span class="kw">using namespace</span> std;  <span class="com">// لتجنب كتابة std:: قبل كل أمر</span>
+
+<span class="kw">int</span> <span class="func">main</span>() {
+    cout << <span class="str">"Welcome to C++"</span> << endl; <span class="com">// طباعة</span>
+    <span class="kw">return</span> <span class="num">0</span>; <span class="com">// إنهاء البرنامج بنجاح</span>
+}</code></pre>
+
+    <div class="info-box">
+        <strong>الفرق بين <code>\n</code> و <code>endl</code>:</strong><br>
+        <code>\n</code>: أسرع في الأداء (مجرد حرف).<br>
+        <code>endl</code>: أبطأ لأنها تقوم بعمل Flush (تفريغ البفر) لضمان ظهور النص فوراً.
+    </div>
+
+    <h3>2. المتغيرات والذاكرة (Variables & Data Types)</h3>
+    <table>
+        <tr><th>النوع</th><th>الحجم (Bytes)</th><th>الاستخدام</th><th>مثال</th></tr>
+        <tr><td>int</td><td>4</td><td>أرقام صحيحة</td><td>10, -5</td></tr>
+        <tr><td>float</td><td>4</td><td>أرقام عشرية صغيرة</td><td>3.14</td></tr>
+        <tr><td>double</td><td>8</td><td>أرقام عشرية دقيقة</td><td>3.141592</td></tr>
+        <tr><td>char</td><td>1</td><td>حرف واحد</td><td>'A'</td></tr>
+        <tr><td>bool</td><td>1</td><td>منطقي</td><td>true / false</td></tr>
+        <tr><td>string</td><td>Dynamic</td><td>سلسلة نصية</td><td>"Hello"</td></tr>
+    </table>
+
+    <h3>3. أدوات التحكم (Control Structures)</h3>
+    <ul>
+        <li><strong>if / else:</strong> لاتخاذ القرارات.</li>
+        <li><strong>switch:</strong> للاختيار بين قيم متعددة (أسرع من if في حالات التساوي).</li>
+        <li><strong>Loops:</strong>
+            <ul>
+                <li><code>for</code>: عدد مرات التكرار معروف.</li>
+                <li><code>while</code>: التكرار بشرط معين.</li>
+                <li><code>do-while</code>: ينفذ الكود مرة واحدة على الأقل قبل فحص الشرط.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="exam-box">
+        <span class="exam-title">🔥 سؤال امتحان (Break vs Continue):</span>
+        <code>break</code>: تخرج من اللوب نهائياً.<br>
+        <code>continue</code>: تتجاهل اللفة الحالية وتنتقل للتي تليها.
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الثاني: الدوال والذاكرة (Functions & Pointers)</h2>
+
+    <h3>1. تمرير الباراميترات (Passing Parameters)</h3>
+    
+    <h4>أ- Pass by Value (بالقيمة)</h4>
+    <p>يتم إرسال "نسخة" من المتغير. التعديل لا يؤثر على الأصل.</p>
+    <pre><code><span class="type">void</span> <span class="func">change</span>(<span class="type">int</span> x) { x = <span class="num">100</span>; } <span class="com">// الأصل لن يتغير</span></code></pre>
+
+    <h4>ب- Pass by Reference (بالمرجع)</h4>
+    <p>يتم إرسال "عنوان" المتغير. التعديل يغير الأصل. نستخدم علامة <code>&</code>.</p>
+    <pre><code><span class="type">void</span> <span class="func">change</span>(<span class="type">int</span> &x) { x = <span class="num">100</span>; } <span class="com">// الأصل سيتغير</span></code></pre>
+
+    <h3>2. المؤشرات (Pointers)</h3>
+    <p>المؤشر هو متغير يخزن "عنوان ذاكرة" لمتغير آخر.</p>
+    <pre><code><span class="type">int</span> x = <span class="num">10</span>;
+<span class="type">int</span> *ptr = &x;  <span class="com">// ptr يخزن عنوان x</span>
+cout << *ptr;   <span class="com">// طباعة القيمة التي يشير إليها (Dereferencing) -> 10</span></code></pre>
+
+    <h3>3. الذاكرة الديناميكية (Dynamic Memory Allocation)</h3>
+    <p>التحكم اليدوي في الذاكرة (Heap) باستخدام <code>new</code> و <code>delete</code>.</p>
+    <pre><code><span class="type">int</span> *p = <span class="kw">new</span> <span class="type">int</span>;  <span class="com">// حجز مكان في Heap</span>
+*p = <span class="num">50</span>;
+<span class="kw">delete</span> p;          <span class="com">// تنظيف الذاكرة (ضروري جداً لمنع Memory Leak)</span></code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الثالث: OOP Basics & Encapsulation</h2>
+
+    <h3>1. Class vs Struct</h3>
+    <ul>
+        <li><strong>Class:</strong> الأعضاء <code>private</code> بشكل افتراضي.</li>
+        <li><strong>Struct:</strong> الأعضاء <code>public</code> بشكل افتراضي. (يستخدم غالباً للبيانات البسيطة).</li>
+    </ul>
+
+    <h3>2. التغليف (Encapsulation)</h3>
+    <p>هو وضع البيانات والدوال في كبسولة واحدة، ومنع الوصول المباشر للبيانات الحساسة.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Employee</span> {
+<span class="kw">private</span>:
+    <span class="type">double</span> salary; <span class="com">// مخفي لا يمكن الوصول له مباشرة</span>
+
+<span class="kw">public</span>:
+    <span class="com">// Setter: نضع شروطاً للتحكم في القيمة</span>
+    <span class="type">void</span> <span class="func">setSalary</span>(<span class="type">double</span> s) {
+        <span class="kw">if</span>(s > <span class="num">0</span>) salary = s;
+    }
+    <span class="com">// Getter: لقراءة القيمة</span>
+    <span class="type">double</span> <span class="func">getSalary</span>() { <span class="kw">return</span> salary; }
+};</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الرابع: Constructors & Special Members</h2>
+
+    <h3>1. أنواع الـ Constructors (المنشئات)</h3>
+    <p>الـ Constructor هو دالة بنفس اسم الكلاس، ليس لها return type، وتنفذ لحظة إنشاء الكائن.</p>
+
+    <h4>أ- Initialization List (قائمة التهيئة)</h4>
+    <p>طريقة أسرع وأفضل لتهيئة المتغيرات، وتكون إجبارية مع <code>const</code> و <code>reference</code>.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Box</span> {
+    <span class="type">int</span> width;
+<span class="kw">public</span>:
+    <span class="com">// Initialization List</span>
+    <span class="func">Box</span>(<span class="type">int</span> w) : width(w) { } 
+};</code></pre>
+
+    <h4>ب- Copy Constructor (Deep vs Shallow Copy)</h4>
+    <div class="exam-box">
+        <span class="exam-title">⚠️ أخطر تريكة في OOP:</span>
+        <ul>
+            <li><strong>Shallow Copy:</strong> (الافتراضي) ينسخ القيم فقط. لو فيه مؤشرات (Pointers)، الكائنين هيشاوروا على نفس المكان. كارثة عند استخدام <code>delete</code>.</li>
+            <li><strong>Deep Copy:</strong> (بنكتبه يدوياً) بنحجز مكان جديد في الذاكرة وننسخ القيمة.</li>
+        </ul>
+    </div>
+
+    <pre><code><span class="com">// مثال Deep Copy</span>
+<span class="func">Box</span>(<span class="kw">const</span> <span class="type">Box</span> &old) {
+    ptr = <span class="kw">new</span> <span class="type">int</span>;   <span class="com">// حجز جديد</span>
+    *ptr = *(old.ptr); <span class="com">// نقل القيمة وليس العنوان</span>
+}</code></pre>
+
+    <h3>2. Destructor (المهدم)</h3>
+    <p>يُكتب <code>~ClassName()</code>. يعمل تلقائياً عند مسح الكائن. وظيفته تنظيف الذاكرة (delete pointers).</p>
+
+    <h3>3. Static Members</h3>
+    <ul>
+        <li><strong>Static Variable:</strong> متغير واحد مشترك بين كل الكائنات (لو اتغير في كائن يتغير عند الكل).</li>
+        <li><strong>Static Function:</strong> دالة يمكن استدعاؤها باسم الكلاس دون عمل Object. <code>MyClass::func()</code>.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الخامس: العلاقات المتقدمة (This & Friend)</h2>
+
+    <h3>1. This Pointer</h3>
+    <p>مؤشر مخفي يشير للكائن الحالي. يستخدم لـ:</p>
+    <ul>
+        <li>التفريق بين اسم المتغير والباراميتر لو نفس الاسم: <code>this->age = age;</code></li>
+        <li>إرجاع الكائن نفسه: <code>return *this;</code></li>
+    </ul>
+
+    <h3>2. Friend Function / Class</h3>
+    <p>دالة أو كلاس "صديق" يُسمح له بالوصول لـ <code>private members</code> للكلاس.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Box</span> {
+    <span class="type">int</span> width;
+    <span class="kw">friend void</span> <span class="func">printWidth</span>(<span class="type">Box</span> b); <span class="com">// تصريح الصداقة</span>
+};
+
+<span class="type">void</span> <span class="func">printWidth</span>(<span class="type">Box</span> b) {
+    cout << b.width; <span class="com">// وصول مباشر للـ private!</span>
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل السادس: الوراثة (Inheritance)</h2>
+
+    <h3>1. أوضاع الوراثة (Inheritance Modes)</h3>
+    <table>
+        <tr><th>Mode</th><th>تأثيره على الابن</th></tr>
+        <tr><td>Public</td><td>يبقى كل شيء كما هو (Public->Public, Private->Hidden).</td></tr>
+        <tr><td>Protected</td><td>الـ Public يصبح Protected.</td></tr>
+        <tr><td>Private</td><td>كل شيء يصبح Private داخل الابن (لا يورث للأحفاد).</td></tr>
+    </table>
+
+    <h3>2. Order of Constructor/Destructor</h3>
+    <div class="info-box">
+        عند إنشاء الابن: ينفذ <strong>Constructor الأب أولاً</strong> ثم الابن.<br>
+        عند الهدم: ينفذ <strong>Destructor الابن أولاً</strong> ثم الأب (العكس).
+    </div>
+
+    <h3>3. مشكلة Diamond Problem</h3>
+    <p>عند الوراثة الهجينة، يتكرر الأب في الذاكرة. الحل: <code>virtual inheritance</code>.</p>
+    <pre><code><span class="kw">class</span> <span class="type">B</span> : <span class="kw">virtual public</span> <span class="type">A</span> { ... };</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل السابع: Polymorphism & Abstraction</h2>
+
+    <h3>1. Function Overriding</h3>
+    <p>إعادة كتابة دالة الأب في الابن بنفس التوقيع.</p>
+    
+    <h3>2. Virtual Functions (Polymorphism)</h3>
+    <p>لتحقيق Runtime Polymorphism، لازم دالة الأب تكون <code>virtual</code>. بدونه، المؤشر من نوع الأب سينفذ دالة الأب دائماً حتى لو يشير لابن.</p>
+
+    <pre><code><span class="kw">class</span> <span class="type">Base</span> {
+<span class="kw">public</span>:
+    <span class="kw">virtual void</span> <span class="func">show</span>() { cout << <span class="str">"Base"</span>; }
+};
+
+<span class="kw">class</span> <span class="type">Derived</span> : <span class="kw">public</span> <span class="type">Base</span> {
+<span class="kw">public</span>:
+    <span class="type">void</span> <span class="func">show</span>() { cout << <span class="str">"Derived"</span>; }
+};
+
+<span class="type">Base</span>* b = <span class="kw">new</span> <span class="type">Derived</span>();
+b->show(); <span class="com">// تطبع Derived بسبب virtual</span></code></pre>
+
+    <h3>3. Virtual Destructor</h3>
+    <div class="exam-box">
+        <span class="exam-title">⚠️ هام جداً جداً:</span>
+        لو عندك Class فيه دوال Virtual، لازم الـ Destructor يكون <code>virtual</code>.<br>
+        <strong>السبب:</strong> عشان لما نمسح مؤشر الأب (delete ptr)، يتم استدعاء Destructor الابن الأول لتنظيف ذاكرته. لو مش virtual، هيتمسح الأب بس والابن يفضل في الذاكرة (Memory Leak).
+    </div>
+
+    <h3>4. Abstract Class & Pure Virtual</h3>
+    <p>الكلاس المجرد (Abstract) هو كلاس لا يمكن عمل Object منه، وظيفته وضع "قوانين" للأبناء.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Shape</span> {
+<span class="kw">public</span>:
+    <span class="kw">virtual void</span> <span class="func">draw</span>() = <span class="num">0</span>; <span class="com">// Pure Virtual Function</span>
+};</code></pre>
+
+    <div class="page-break"></div>
+
+    <div style="text-align: center; margin-top: 100px;">
+        <h2>تم بحمد الله</h2>
+    </div>
+
+</body>
+</html>
