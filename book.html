@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>المرجع الشامل في C++ و OOP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f0f8ff;
+            --code-bg: #1e1e1e;
+            --text-color: #333;
+            --accent: #ff9800;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+        }
+
+        /* تنسيقات خاصة بالطباعة لتحويلها لـ PDF */
+        @media print {
+            body { padding: 0; margin: 0; }
+            .no-print { display: none; }
+            a { text-decoration: none; color: black; }
+            .page-break { page-break-after: always; }
+        }
+
+        .book-cover {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 10px solid var(--primary-color);
+            margin-bottom: 50px;
+        }
+
+        .book-cover h1 {
+            font-size: 4em;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .book-cover p {
+            font-size: 1.5em;
+            color: #666;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 2em;
+        }
+
+        h3 {
+            color: #444;
+            margin-top: 25px;
+            border-right: 5px solid var(--accent);
+            padding-right: 10px;
+            background: #fff8e1;
+            padding: 8px;
+            display: inline-block;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        /* تصميم الأكواد */
+        pre {
+            background-color: var(--code-bg);
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            direction: ltr;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: auto;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+
+        code { font-family: 'JetBrains Mono', monospace; }
+
+        /* Syntax Highlighting */
+        .kw { color: #569cd6; font-weight: bold; } /* Keyword */
+        .type { color: #4ec9b0; } /* Type */
+        .str { color: #ce9178; } /* String */
+        .num { color: #b5cea8; } /* Number */
+        .func { color: #dcdcaa; } /* Function */
+        .com { color: #6a9955; font-style: italic; } /* Comment */
+
+        .note {
+            background-color: #e3f2fd;
+            border-right: 5px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .exam-tip {
+            background-color: #fff3cd;
+            border-right: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book-cover">
+        <h1>C++ & OOP</h1>
+        <h2>الدليل الشامل للبرمجة كائنية التوجه</h2>
+        <p>شرح كامل - أمثلة عملية - ملاحظات امتحانات</p>
+        <p><strong>إعداد: Mostafa Hosny</strong></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الأول: أساسيات C++ (Basic Overview)</h2>
+    <p>لغة C++ هي لغة فائقة السرعة تستخدم في بناء الأنظمة الكبيرة والألعاب.</p>
+
+    <h3>1. الهيكل الأساسي (Structure)</h3>
+    <pre><code><span class="kw">#include</span> &lt;iostream&gt;
+<span class="kw">using namespace</span> std;
+
+<span class="kw">int</span> <span class="func">main</span>() {
+    cout << <span class="str">"Hello C++"</span>;
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+
+    <div class="exam-tip">📌 ملاحظة: دالة main هي نقطة انطلاق أي برنامج، وبدونها لا يعمل الكود.</div>
+
+    <h3>2. المتغيرات (Variables)</h3>
+    <table>
+        <tr><th>النوع</th><th>الوصف</th><th>الحجم تقريبًا</th></tr>
+        <tr><td>int</td><td>أرقام صحيحة (1, 50)</td><td>4 Bytes</td></tr>
+        <tr><td>double</td><td>أرقام عشرية دقيقة</td><td>8 Bytes</td></tr>
+        <tr><td>char</td><td>حرف واحد ('A')</td><td>1 Byte</td></tr>
+        <tr><td>bool</td><td>true / false</td><td>1 Byte</td></tr>
+        <tr><td>string</td><td>نصوص ("Ali")</td><td>Dynamic</td></tr>
+    </table>
+
+    <h3>3. الدوال (Functions)</h3>
+    <p>هي كتل برمجية تؤدي وظيفة معينة ويمكن استدعاؤها مراراً.</p>
+    <pre><code><span class="type">int</span> <span class="func">sum</span>(<span class="type">int</span> a, <span class="type">int</span> b = <span class="num">10</span>) { <span class="com">// Default Parameter</span>
+    <span class="kw">return</span> a + b;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الثاني: مدخل إلى OOP</h2>
+    
+    <h3>1. البرمجة الإجرائية vs الكائنية</h3>
+    <p><strong>Procedural:</strong> تعتمد على الدوال وتفتقر لأمن البيانات.<br>
+    <strong>OOP:</strong> تعتمد على الكائنات (Objects) وتوفر الأمان وإعادة الاستخدام.</p>
+
+    <h3>2. الكلاس والكائن (Class & Object)</h3>
+    <pre><code><span class="kw">class</span> <span class="type">Car</span> {
+<span class="kw">public</span>:
+    <span class="type">string</span> model;
+    <span class="type">int</span> year;
+
+    <span class="type">void</span> <span class="func">start</span>() {
+        cout << <span class="str">"Engine Started"</span>;
+    }
+};
+
+<span class="kw">int</span> <span class="func">main</span>() {
+    <span class="type">Car</span> c1;       <span class="com">// Object Creation</span>
+    c1.model = <span class="str">"BMW"</span>;
+    c1.start();
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الثالث: Constructors & Encapsulation</h2>
+
+    <h3>1. المنشئات (Constructors)</h3>
+    <p>دالة خاصة تحمل نفس اسم الكلاس، تُستدعى تلقائيًا عند إنشاء الكائن.</p>
+    <ul>
+        <li><strong>Default:</strong> بدون باراميترات.</li>
+        <li><strong>Parameterized:</strong> يأخذ قيم أولية.</li>
+        <li><strong>Copy:</strong> ينسخ بيانات كائن لآخر (يأخذ Reference).</li>
+    </ul>
+
+    <pre><code><span class="kw">class</span> <span class="type">Point</span> {
+    <span class="type">int</span> x, y;
+<span class="kw">public</span>:
+    <span class="func">Point</span>() { x=0; y=0; }              <span class="com">// Default</span>
+    <span class="func">Point</span>(<span class="type">int</span> a) { x=a; y=0; }         <span class="com">// Parameterized</span>
+    <span class="func">Point</span>(<span class="type">Point</span> &p) { x=p.x; y=p.y; }  <span class="com">// Copy</span>
+};</code></pre>
+
+    <h3>2. التغليف (Encapsulation)</h3>
+    <p>إخفاء البيانات (Private) والوصول إليها عبر دوال (Public Setters/Getters).</p>
+    <div class="note">💡 فائدته: حماية البيانات من التعديل الخاطئ (مثل وضع عمر بالسالب).</div>
+
+    <pre><code><span class="kw">class</span> <span class="type">User</span> {
+<span class="kw">private</span>:
+    <span class="type">int</span> password;
+<span class="kw">public</span>:
+    <span class="type">void</span> <span class="func">setPassword</span>(<span class="type">int</span> p) {
+        <span class="kw">if</span>(p > <span class="num">1000</span>) password = p;
+    }
+};</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الرابع: الوراثة (Inheritance)</h2>
+    
+    <h3>أنواع الوراثة</h3>
+    <ol>
+        <li><strong>Single:</strong> ابن يرث من أب واحد.</li>
+        <li><strong>Multiple:</strong> ابن يرث من عدة آباء.</li>
+        <li><strong>Multilevel:</strong> جد -> أب -> ابن.</li>
+        <li><strong>Hierarchical:</strong> أب واحد له عدة أبناء.</li>
+        <li><strong>Hybrid:</strong> خليط (يسبب مشكلة Diamond Problem).</li>
+    </ol>
+
+    <div class="exam-tip">🔥 هام للامتحان: حل مشكلة Diamond Problem هو استخدام <code>virtual inheritance</code>.</div>
+
+    <pre><code><span class="kw">class</span> <span class="type">A</span> { };
+<span class="kw">class</span> <span class="type">B</span> : <span class="kw">virtual public</span> <span class="type">A</span> { }; 
+<span class="kw">class</span> <span class="type">C</span> : <span class="kw">virtual public</span> <span class="type">A</span> { }; 
+<span class="kw">class</span> <span class="type">D</span> : <span class="kw">public</span> <span class="type">B</span>, <span class="kw">public</span> <span class="type">C</span> { };</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>الفصل الخامس: Polymorphism & Abstraction</h2>
+
+    <h3>1. تعدد الأشكال (Polymorphism)</h3>
+    <ul>
+        <li><strong>Compile-time (Overloading):</strong> نفس الدالة بباراميترات مختلفة.</li>
+        <li><strong>Runtime (Overriding):</strong> تعديل وظيفة دالة موروثة (يتطلب <code>virtual</code>).</li>
+    </ul>
+
+    <pre><code><span class="kw">class</span> <span class="type">Shape</span> {
+<span class="kw">public</span>:
+    <span class="kw">virtual void</span> <span class="func">draw</span>() { cout << <span class="str">"Shape"</span>; }
+};
+
+<span class="kw">class</span> <span class="type">Circle</span> : <span class="kw">public</span> <span class="type">Shape</span> {
+<span class="kw">public</span>:
+    <span class="type">void</span> <span class="func">draw</span>() { cout << <span class="str">"Circle"</span>; } <span class="com">// Overriding</span>
+};</code></pre>
+
+    <h3>2. التجريد (Abstraction)</h3>
+    <p>استخدام <strong>Pure Virtual Function</strong> لإخفاء تفاصيل التنفيذ وإجبار الأبناء على تطبيق الدوال.</p>
+    <pre><code><span class="kw">virtual void</span> <span class="func">test</span>() = <span class="num">0</span>; <span class="com">// دالة نقية تجعل الكلاس Abstract</span></code></pre>
+
+    <hr>
+    
+    <h2>ملحق: مواضيع متقدمة (Advanced Topics)</h2>
+    
+    <h3>1. Static Member</h3>
+    <p>متغير أو دالة تنتمي للكلاس نفسه وليس للـ Object. تشترك جميع الكائنات في نفس القيمة.</p>
+    
+    <h3>2. The 'this' Pointer</h3>
+    <p>مؤشر يشير إلى الكائن الحالي الذي يستدعي الدالة. مفيد لتمييز المتغيرات إذا تشابهت الأسماء.</p>
+    <pre><code><span class="func">Student</span>(<span class="type">int</span> age) {
+    <span class="kw">this</span>->age = age;
+}</code></pre>
+
+    <h3>3. Destructor (المهدم)</h3>
+    <p>دالة تُستدعى تلقائيًا عند انتهاء حياة الكائن لتنظيف الذاكرة. شكلها: <code>~ClassName()</code>.</p>
+
+    <footer>
+        <p>تم إنشاء هذا الكتاب للمراجعة الأكاديمية والعملية - بالتوفيق! ❤️</p>
+    </footer>
+
+    <script>
+        // سكربت بسيط لفتح نافذة الطباعة تلقائيا عند التحميل إذا رغبت
+        // window.print();
+    </script>
+</body>
+</html>
